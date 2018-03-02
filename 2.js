@@ -18,10 +18,10 @@ if ("help" in args || !args.file) {
 
 var hello = require("./helloworld2.js");
 
-hello.say(args.file, function(err, msg) {
-    if (err) {
-        console.error("Error: " + err);
-    } else {
-        console.log(msg.toString());
-    }
+hello.say(args.file)
+.val(function(msg){
+    console.log(msg.toString());
+})
+.or(function(err) {
+    console.error("Error: " + err);
 });
